@@ -1,0 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Barrio', cursive;
+}
+body{
+  background-image: url("../img/fondo.jpg");
+}
+.container{
+  display: flex;
+  flex-direction: column;
+}
+#titulo{
+  text-align: center;
+  font-size: 3.5em;
+  color: #6E6E6E;
+}
+.imagenes{
+  width: 400px;
+}
+#contenedorCarrusel{
+  width: 2100px;
+  padding: 0;
+  margin: 0;
+}
+#carrusel{
+  width: 410px;
+  height: 410px;
+  justify-content: center;
+  position: relative;
+  align-self: center;
+  overflow: hidden;
+}
+.imagenes{
+  border: 5px solid #f0ead0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 2%;
+}
+.contenedorbase{
+  display: block;
+}
+.contenedores{
+  display: none;
+}
+#navegacion{
+  width: 100%;
+  margin-top: 2%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+#navegacion li{
+  background: #6E6E6E;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin-top:: 10%;
+  cursor: pointer;
+}
+#navegacion li.botones{
+  background: crimson;
+}

@@ -1,40 +1,39 @@
-/*PATRON DE MODULO*/
+var cargarPagina = function () {
+	// Elementos
+	var $botones = $(".control");
+	var $anterior = $(".previous");
+	var $siguiente = $(".next");
 
-$(function(){
-  var moduloCarrusel = (function(){
-    var imgs = {};
-    imgs.el = $("#carrusel");
-    imgs.items = {
-      panel: imgs.el.find(".contenedorbase")
-    }
-    /*VARIABLES*/
-     var sliderInterval,
-         currentSlider = 0,
-         nextSlider = 1,
-         lenghtSlider = imgs.items.panel.length;
-    /*INICIAR*/
-    imgs.init = function(settings){
-      sliderInit();
-    }
-    var sliderInit = function(){
-      sliderInterval = setInterval(imgs.startSlider,3000);
-    }
-    imgs.startSlider = function(){
-      var panel = imgs.items.panel;
-      if (nextSlider >= lenghtSlider){
-        nextSlider = 0;
-        currentSlider = lengthSlider-1;
-      }
-      /*EFECTOS*/
-      panels.eq(currentSlider).fadeOut("slow");
-      panels.eq(nextSlider).fadeIn("slow");
+	// Eventos
+	$botones.click(cambiarImagen);
+	$anterior.click(anteriorImagen);
+	$siguiente.click(siguienteImagen);
+};
 
+var cambiarImagen = function () {
+	target =  $(this).data("target")
+	console.log(target);
+	mostrarImagen(target);
+};
+var mostrarImagen = function (target) {
+	var lastSlide = $("div.active");
+	var slide = $("div[data-slide='" + target + "']");
+	lastSlide.removeClass("active");
+	slide.addClass("active");
+};
 
-      /*ACTUALIZAMOS DATOS*/
-      currentSlider = nextSlider;
-      nextSlider += 1;
-    }
-    return imgs;
-  }());
-  moduloCarrusel.init();
-});
+var anteriorImagen = function (e) {
+	e.preventDefault();
+	target = target - 1;
+	target = (target < 0) ? 3 : target;
+	mostrarImagen(target);
+};
+
+var siguienteImagen = function (e) {
+	e.preventDefault();
+	target = target + 1;
+	target = (target > 3) ? 0 : target;
+	mostrarImagen(target);mostrarImagen(target);
+};
+
+$(document).ready(cargarPagina);
